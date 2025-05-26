@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/92647b87-afd4-4488-b428-1bdd25209cb1)# Student Lab Presence Detection using YOLO
 
 ## Overview
 This project uses advanced YOLO (You Only Look Once) computer vision models to detect and monitor students in a laboratory environment.
