@@ -30,3 +30,14 @@ This project uses advanced YOLO (You Only Look Once) computer vision models to d
 <img width="925" alt="image" src="https://github.com/user-attachments/assets/4a1e17a9-3c6c-4a4f-9c7c-14de63a1c006" />
 
 ![image](https://github.com/user-attachments/assets/0633a10b-4a87-47b7-94d7-d273e4829729)
+
+
+** How To Run The Project:
+* Clone the project to your local
+* Install the required libraries
+* Run python new.py first
+* Then run durationmonitor.py
+* And then cd to app and run dashboard.py
+
+
+** Future Dockerized Version incoming

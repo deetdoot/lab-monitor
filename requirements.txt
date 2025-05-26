@@ -1,3 +1,4 @@
 ultralytics==8.3.144
 requests==2.31.0
 mysql-connector-python==9.3.0
+Flask==3.1.1
