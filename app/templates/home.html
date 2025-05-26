@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track IDs Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background: #f0f0f0; }
+        tr:last-child td { border-bottom: none; }
+    </style>
+    <script>
+        setInterval(function() {
+            window.location.reload();
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Track IDs Dashboard</h1>
+        <p><strong>Total Track IDs:</strong> {{ track_count }}</p>
+        <table>
+            <tr>
+                <th>Track ID</th>
+                <th>Duration</th>
+            </tr>
+            {% for track_id, duration in tracks %}
+            <tr>
+                <td>{{ track_id }}</td>
+                <td>{{ duration }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
