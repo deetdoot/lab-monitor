@@ -4,6 +4,31 @@ import time
 import mysql.connector
 
 class DurationMonitor:
+    """
+    DurationMonitor tracks the duration of detected objects across frames based on their track IDs.
+
+    Attributes:
+        start_times (dict): Maps track IDs to their initial detection timestamps.
+        durations (dict): Maps track IDs to the duration (in seconds) since their first detection.
+
+    Methods:
+        process_frame(timestamp_str, detections):
+            Processes a frame, updating durations for each detected object.
+            Args:
+                timestamp_str (str): Timestamp of the frame in "%Y-%m-%d %H:%M:%S.%f" format.
+                detections (list): List of detection dicts, each containing at least a "track_id" key.
+
+        get_durations():
+            Returns the current durations for all tracked objects.
+
+    Example:
+        >>> from durationmonitor import DurationMonitor
+        >>> monitor = DurationMonitor()
+        >>> monitor.process_frame("2024-06-01 12:00:00.000000", [{"track_id": 1}, {"track_id": 2}])
+        >>> monitor.process_frame("2024-06-01 12:00:05.000000", [{"track_id": 1}])
+        >>> monitor.get_durations()
+        {1: 5.0, 2: 0.0}
+    """
     def __init__(self):
         self.start_times = {}
         self.durations = {}
@@ -20,7 +45,7 @@ class DurationMonitor:
     def get_durations(self):
         return self.durations
 
-# Example usage
+
 if __name__ == "__main__":
     monitor = DurationMonitor()
     while True:
@@ -61,7 +86,7 @@ if __name__ == "__main__":
             result = cursor.fetchone()
             if result:
                 # Update the existing duration
-                new_duration = result[0] + duration
+                new_duration = duration
                 cursor.execute(
                     '''
                     UPDATE PrimaryTable

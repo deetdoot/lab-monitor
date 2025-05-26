@@ -10,16 +10,44 @@
         th, td { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
         th { background: #f0f0f0; }
         tr:last-child td { border-bottom: none; }
+        .delete-btn {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        .delete-btn:hover {
+            background: #c0392b;
+        }
     </style>
     <script>
-        setInterval(function() {
-            window.location.reload();
-        }, 1000);
+        // Only auto-refresh if not submitting the delete form
+        let isDeleting = false;
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form[action="/delete_all"]');
+            if (form) {
+                form.addEventListener('submit', function() {
+                    isDeleting = true;
+                });
+            }
+            setInterval(function() {
+                if (!isDeleting) {
+                    window.location.reload();
+                }
+            }, 1000);
+        });
     </script>
 </head>
 <body>
     <div class="container">
         <h1>Track IDs Dashboard</h1>
+        <form method="POST" action="/delete_all" style="margin-bottom: 15px;">
+            <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete all track IDs?');">Delete All</button>
+        </form>
         <p><strong>Total Track IDs:</strong> {{ track_count }}</p>
         <table>
             <tr>
