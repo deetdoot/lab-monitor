@@ -97,14 +97,19 @@ if __name__ == "__main__":
                 )
             else:
                 # Insert as new
+                # Format duration as hh:mm:ss
+                hours = int(duration // 3600)
+                minutes = int((duration % 3600) // 60)
+                seconds = int(duration % 60)
+                duration_str = f"{hours:02d}:{minutes:02d}:{seconds:02d}"
                 cursor.execute(
                     '''
                     INSERT INTO PrimaryTable (Timestamp, Track_ID, Duration)
                     VALUES (%s, %s, %s)
                     ''',
-                    (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), track_id, duration)
+                    (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), track_id, duration_str)
                 )
         conn.commit()
-        time.sleep(1)  # Sleep for a second before the next iteration
+        time.sleep(5)  # Sleep for a second before the next iteration
     
     conn.close()

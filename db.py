@@ -20,7 +20,7 @@ create_table_query = """
 CREATE TABLE IF NOT EXISTS `PrimaryTable` (
     Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     Track_ID VARCHAR(255) NOT NULL,
-    Duration INT
+    Duration TIME
 )
 """
 cursor.execute(create_table_query)
